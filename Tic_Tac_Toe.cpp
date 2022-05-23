@@ -1,18 +1,24 @@
-#include<iostream>
-#include<conio.h>
+// Tic Tac Toe Game C++.
+// Made By: Aman Singh Bhogal
+// Algorithm used for Computer Opponent is Mini Max Algorithm.
+
+#include<iostream>  // For Input Output.
+#include<conio.h>   // For using getch() function.
 using namespace std;
 
 class tic_tac_toe
 {
-	char square[10] = {'a','1','2','3','4','5','6','7','8','9'};
+    // Initializing the Squares:
+	char square[10] = {'0','1','2','3','4','5','6','7','8','9'};
+
 	public:
-	void display();
-	int checkwin();
-	void board();
-    int make_move(int n,int player);
-	void run();
-    int minimax_AI(int depth,int isAI);
-    int Find_The_Best_Move();
+	void display();     // Formatted Output Screen.
+	int checkwin();     // Constantly Check for winner.
+	void board();       // Logic for Board.
+    int make_move(int n,int player);    // Used to make Move on Board
+	void run();         // Handles entire Execution
+    int minimax_AI(int depth,int isAI);     // Mini Max Algorithm for Computer Opponent.
+    int Find_The_Best_Move();       // Finds best move for AI at any given Instance.
 };
 
 int tic_tac_toe::make_move(int n, int player)
@@ -35,7 +41,10 @@ int tic_tac_toe::make_move(int n, int player)
 
 void tic_tac_toe::display()
 {
+    // For Windows use: system("cls");
     system("cls");
+    // For Linux use: system("clear");
+    // system("clear");
     cout<<"\t\t\tTic Tac Toe Using Min Max Algorithm."<<endl;
     cout<<"\t\t\t     Code By: Aman Singh Bhogal"<<endl;
 	cout << "\t\t\t\t    Tic Tac Toe"<<endl;
@@ -44,6 +53,7 @@ void tic_tac_toe::display()
     cout<<endl;
 }
 
+// Logic to check if any player is winning.
 int tic_tac_toe::checkwin()
 {
     if (square[1] == square[2] && square[2] == square[3])
@@ -76,6 +86,7 @@ int tic_tac_toe::checkwin()
     return 0;
 }
 
+// Board of the Game
 void tic_tac_toe::board()
 {
 	display();
@@ -93,6 +104,7 @@ void tic_tac_toe::board()
     cout<<endl<<"To Exit Enter Q/q."<<endl;
 }
 
+// minimax_AI() is a recursive function that tries to find the best possible move for the Computer player.
 int tic_tac_toe::minimax_AI(int depth,int isAI)
 {
     int cost = checkwin();
@@ -143,6 +155,7 @@ int tic_tac_toe::minimax_AI(int depth,int isAI)
     }
 }
 
+// Finc_The_Best_Move() makes use of the minimax_AI() function to make the move for computer player.
 int tic_tac_toe::Find_The_Best_Move()
 {
     int bestscore = -1000;
@@ -170,6 +183,7 @@ int tic_tac_toe::Find_The_Best_Move()
     return bestmove;
 }
 
+// run() function handles the entire execution of the program.
 void tic_tac_toe::run()
 {
     board();
@@ -211,6 +225,7 @@ void tic_tac_toe::run()
 		cout<<"\t\t\t\t  Game Draw!"<<endl<<endl;
 }
 
+// This is the main function of the Program.
 int main()
 {
     tic_tac_toe t;
